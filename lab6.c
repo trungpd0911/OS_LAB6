@@ -12,31 +12,35 @@ int *arr;
 // Number of Page Fault: 9
 void outputOfAlgorithm(int n, int *arr, int pageFrame, int **pageFrameArr, char *pageFaultArr)
 {
-    for (int i = 0; i < n; ++i)
-    {
-        printf("%d  ", arr[i]);
-    }
+    printf("t\t");
+    for (int i = 0; i <= n; i++)
+        printf("%d\t", i);
     printf("\n");
-    for (int i = 0; i < pageFrame; ++i)
+
+    printf("ref\t\t");
+    for (int i = 0; i < n; i++)
+        printf("%d\t", arr[i]);
+    printf("\n\n");
+
+    for (int i = 0; i < pageFrame; i++)
     {
-        for (int j = 0; j < n; ++j)
+        printf("f\t\t");
+        for (int j = 0; j < n; j++)
         {
+            char str[10] = "";
             if (pageFrameArr[i][j] != -1)
-                printf("%d  ", pageFrameArr[i][j]);
-            else
-                printf("   ");
+                sprintf(str, "%d", pageFrameArr[i][j]);
+            printf("%s\t", str);
         }
         printf("\n");
     }
-    int temp = 0;
-    for (int i = 0; i < n; ++i)
+
+    printf("\nhit\t\t");
+    for (int i = 0; i < n; i++)
     {
-        if (pageFaultArr[i] == '*')
-            temp++;
-        printf("%c  ", pageFaultArr[i]);
+        printf("%c\t", pageFaultArr[i]);
     }
-    printf("\n");
-    printf("Number of Page Fault: %d", temp);
+    printf("\n\n");
 }
 
 int main()
@@ -148,6 +152,7 @@ int main()
         }
         }
     }
+
     free(arr);
     free(pageFaultArr);
     for (int i = 0; i < pageFrame; i++)
