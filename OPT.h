@@ -54,17 +54,13 @@ void OPT(int n, int *arr, int pageFrame, int **pageFrameArr, char *pageFaultArr)
                 {
                     temp[z] = 10000;
                 }
-                int count = 0;
-                for (int j = i + 1; j < n; ++j)
+                for (int j = 0; j < pageFrame; ++j)
                 {
-                    if (count == pageFrame)
-                        break;
-                    for (int z = count; z < pageFrame; ++z)
+                    for (int k = i + 1; k < n; ++k)
                     {
-                        if (arr[j] == pageFrameArr[z][i])
+                        if (pageFrameArr[j][i] == arr[k])
                         {
-                            temp[z] = j;
-                            count++;
+                            temp[j] = k;
                             break;
                         }
                     }
@@ -79,6 +75,7 @@ void OPT(int n, int *arr, int pageFrame, int **pageFrameArr, char *pageFaultArr)
                         index = z;
                     }
                 }
+                free(temp);
                 pageFrameArr[index][i] = arr[i];
             }
         }

@@ -60,7 +60,8 @@ int main()
             arr = (int *)malloc(n * sizeof(int));
             // int input[] = {2, 1, 5, 2, 0, 5, 0, 4, 0, 0, 7};
             // int input[] = {1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5};
-            int input[] = {1, 2, 2, 3, 4, 3, 4, 5, 1, 2, 3, 4};
+            // int input[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1};
+            int input[] = {1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5};
             memcpy(arr, input, n * sizeof(int));
             for (int i = 0; i < n; i++)
             {
