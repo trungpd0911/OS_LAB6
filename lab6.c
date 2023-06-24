@@ -36,7 +36,7 @@ void outputOfAlgorithm(int n, int *arr, int pageFrame, int **pageFrameArr, char 
         printf("%c  ", pageFaultArr[i]);
     }
     printf("\n");
-    printf("Number of Page Fault: %d", temp);
+    printf("Number of Page Fault: %d\n", temp);
 }
 
 int main()
@@ -55,9 +55,12 @@ int main()
         case 1:
         {
             printf("Default referenced sequence: ");
-            n = 11;
+            // n = 11;
+            n = 12;
             arr = (int *)malloc(n * sizeof(int));
-            int input[] = {2, 1, 5, 2, 0, 5, 0, 4, 0, 0, 7};
+            // int input[] = {2, 1, 5, 2, 0, 5, 0, 4, 0, 0, 7};
+            // int input[] = {1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5};
+            int input[] = {1, 2, 2, 3, 4, 3, 4, 5, 1, 2, 3, 4};
             memcpy(arr, input, n * sizeof(int));
             for (int i = 0; i < n; i++)
             {
