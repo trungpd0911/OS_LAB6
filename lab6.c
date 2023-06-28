@@ -14,7 +14,7 @@ void outputOfAlgorithm(int n, int *arr, int pageFrame, int **pageFrameArr, char 
 {
     for (int i = 0; i < n; ++i)
     {
-        printf("%d  ", arr[i]);
+        printf("%d\t", arr[i]);
     }
     printf("\n");
     for (int i = 0; i < pageFrame; ++i)
@@ -22,9 +22,9 @@ void outputOfAlgorithm(int n, int *arr, int pageFrame, int **pageFrameArr, char 
         for (int j = 0; j < n; ++j)
         {
             if (pageFrameArr[i][j] != -1)
-                printf("%d  ", pageFrameArr[i][j]);
+                printf("%d\t", pageFrameArr[i][j]);
             else
-                printf("   ");
+                printf("\t");
         }
         printf("\n");
     }
@@ -33,7 +33,7 @@ void outputOfAlgorithm(int n, int *arr, int pageFrame, int **pageFrameArr, char 
     {
         if (pageFaultArr[i] == '*')
             temp++;
-        printf("%c  ", pageFaultArr[i]);
+        printf("%c\t", pageFaultArr[i]);
     }
     printf("\n");
     printf("Number of Page Fault: %d\n", temp);
