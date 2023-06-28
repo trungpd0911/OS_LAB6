@@ -11,36 +11,75 @@ void OPT(int n, int *arr, int pageFrame, int **pageFrameArr, char *pageFaultArr)
     pageFrameArr[0][0] = arr[0];
     // gán giá trị đầu tiên của mảng vào page fault
     pageFaultArr[0] = '*';
-    for (int i = 1; i < n; ++i)
+    int i = 1;
+    int checkEmpty = false;
+    int checkSame = false;
+    while (i < n)
     {
-        int check = false;
+        checkEmpty = false;
+        checkSame = false;
         for (int j = 0; j < pageFrame; ++j)
         {
-            if (arr[i] == pageFrameArr[j][i])
+            pageFrameArr[j][i] = pageFrameArr[j][i - 1];
+        }
+        for (int j = 0; j < pageFrame; ++j)
+        {
+            if (pageFrameArr[j][i] == arr[i])
             {
-                check = true;
+                checkSame = true;
+                break;
+            }
+            if (pageFrameArr[j][i] == -1)
+            {
+                checkEmpty = true;
+                pageFrameArr[j][i] = arr[i];
                 break;
             }
         }
-        if (check)
+        if (checkEmpty)
         {
-            pageFaultArr[i] = ' ';
-            for (int j = 0; j < pageFrame; ++j)
-            {
-            }
+            pageFaultArr[i] = '*';
         }
         else
         {
-            pageFaultArr[i] = '*';
-            for (int j = 0; j < pageFrame; ++j)
+            if (checkSame)
             {
-                if (pageFrameArr[j][i] == -1)
+                pageFaultArr[i] = ' ';
+            }
+            else
+            {
+                pageFaultArr[i] = '*';
+                int *temp = (int *)malloc(pageFrame * sizeof(int));
+                for (int z = 0; z < pageFrame; ++z)
                 {
-                    pageFrameArr[j][i] = arr[i];
-                    break;
+                    temp[z] = 10000;
                 }
+                for (int j = 0; j < pageFrame; ++j)
+                {
+                    for (int k = i + 1; k < n; ++k)
+                    {
+                        if (pageFrameArr[j][i] == arr[k])
+                        {
+                            temp[j] = k;
+                            break;
+                        }
+                    }
+                }
+                int max = temp[0];
+                int index = 0;
+                for (int z = 0; z < pageFrame; ++z)
+                {
+                    if (temp[z] > max)
+                    {
+                        max = temp[z];
+                        index = z;
+                    }
+                }
+                free(temp);
+                pageFrameArr[index][i] = arr[i];
             }
         }
+        i++;
     }
     // duyệt từ phần tử thứ 2 của mảng
     // 2 1 5 2 0 5 0 4 0 0 7
