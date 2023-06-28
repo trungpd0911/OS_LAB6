@@ -12,56 +12,55 @@ int *arr;
 // Number of Page Fault: 9
 void outputOfAlgorithm(int n, int *arr, int pageFrame, int **pageFrameArr, char *pageFaultArr)
 {
-    printf("t\t");
-    for (int i = 0; i <= n; i++)
-        printf("%d\t", i);
-    printf("\n");
-
-    printf("ref\t\t");
-    for (int i = 0; i < n; i++)
-        printf("%d\t", arr[i]);
-    printf("\n\n");
-
-    for (int i = 0; i < pageFrame; i++)
+    for (int i = 0; i < n; ++i)
     {
-        printf("frame\t\t");
-        for (int j = 0; j < n; j++)
+        printf("%d  ", arr[i]);
+    }
+    printf("\n");
+    for (int i = 0; i < pageFrame; ++i)
+    {
+        for (int j = 0; j < n; ++j)
         {
-            char str[10] = "";
             if (pageFrameArr[i][j] != -1)
-                sprintf(str, "%d", pageFrameArr[i][j]);
-            printf("%s\t", str);
+                printf("%d  ", pageFrameArr[i][j]);
+            else
+                printf("   ");
         }
         printf("\n");
     }
-
-    printf("\nfault\t\t");
-    for (int i = 0; i < n; i++)
+    int temp = 0;
+    for (int i = 0; i < n; ++i)
     {
-        printf("%c\t", pageFaultArr[i]);
+        if (pageFaultArr[i] == '*')
+            temp++;
+        printf("%c  ", pageFaultArr[i]);
     }
-    printf("\n\n");
+    printf("\n");
+    printf("Number of Page Fault: %d\n", temp);
 }
 
 int main()
 {
-    int sl1 = -1;
-    while (sl1 != 1 && sl1 != 2)
+    int option = -1;
+    while (option != 1 && option != 2)
     {
         printf("\n--- Page Replacement algorithm ---\n");
         printf("1. Default referenced sequence\n");
         printf("2. Manual input sequence\n");
         // nhập sự lựa chọn
         printf("Your choice: ");
-        scanf("%d", &sl1);
-        switch (sl1)
+        scanf("%d", &option);
+        switch (option)
         {
         case 1:
         {
             printf("Default referenced sequence: ");
-            n = 11;
-            arr = (int *)malloc(n * sizeof(int));
+            // int input[] = {7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1};
+            // int input[] = {1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5};
+            // int input[] = {1, 2, 3, 4, 2, 1, 5, 6, 2, 1, 2, 3, 7, 6, 3, 2, 1, 2, 3, 6};
             int input[] = {2, 1, 5, 2, 0, 5, 0, 4, 0, 0, 7};
+            n = sizeof(input) / sizeof(input[0]);
+            arr = (int *)malloc(n * sizeof(int));
             memcpy(arr, input, n * sizeof(int));
             for (int i = 0; i < n; i++)
             {
@@ -119,10 +118,10 @@ int main()
         printf("1. FIFO algorithm\n");
         printf("2. OPT algorithm\n");
         printf("3. LRU algorithm\n");
-        int select;
+        int algorithmOption;
         printf("Your algorithm you want to choose: ");
-        scanf("%d", &select);
-        switch (select)
+        scanf("%d", &algorithmOption);
+        switch (algorithmOption)
         {
         case 1:
         {

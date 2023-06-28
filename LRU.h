@@ -7,6 +7,7 @@
 
 #define MAX_PAGE 100
 
+
 void LRU(int n, int *arr, int pageFrame, int **pageFrameArr, char *pageFaultArr)  
 {
     int ref[MAX_PAGE] = {-1};
