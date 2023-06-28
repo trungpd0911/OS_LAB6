@@ -8,36 +8,36 @@
 // #define true 1
 // #define false 0
 
-void printResult(int pageFrame, int n, int *resultArray, int *arr, bool *pageFault, int *replaced)
-{
-    printf("t\t");
-    for (int i = 0; i < n; i++)
-        printf("%d\t", i);
-    printf("\n");
+// void printResult(int pageFrame, int n, int *resultArray, int *arr, bool *pageFault, int *replaced)
+// {
+//     printf("t\t");
+//     for (int i = 0; i < n; i++)
+//         printf("%d\t", i);
+//     printf("\n");
 
-    printf("ref\t\t");
-    for (int i = 0; i < n; i++)
-        printf("%d\t", arr[i]);
-    printf("\n");
+//     printf("ref\t\t");
+//     for (int i = 0; i < n; i++)
+//         printf("%d\t", arr[i]);
+//     printf("\n");
 
-    for (int i = 0; i < pageFrame; i++)
-    {
-        printf("f\t\t");
-        for (int j = 0; j < n; j++)
-            printf("%d\t", resultArray[i * n + j]);
-        printf("\n");
-    }
+//     for (int i = 0; i < pageFrame; i++)
+//     {
+//         printf("f\t\t");
+//         for (int j = 0; j < n; j++)
+//             printf("%d\t", resultArray[i * n + j]);
+//         printf("\n");
+//     }
 
-    printf("hit\t\t");
-    for (int i = 0; i < n; i++)
-        printf("%d\t", pageFault[i]);
-    printf("\n");
+//     printf("hit\t\t");
+//     for (int i = 0; i < n; i++)
+//         printf("%d\t", pageFault[i]);
+//     printf("\n");
 
-    printf("v\t\t");
-    for (int i = 0; i < n; i++)
-        printf("%d\t", replaced[i]);
-    printf("\n");
-}
+//     printf("v\t\t");
+//     for (int i = 0; i < n; i++)
+//         printf("%d\t", replaced[i]);
+//     printf("\n");
+// }
 
 void LRU(int n, int *arr, int pageFrame)
 {
