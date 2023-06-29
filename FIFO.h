@@ -40,22 +40,18 @@ void FIFO(int n, int *arr, int pageFrame, int **pageFrameArr, char *pageFaultArr
                 pageFrameArr[curr][i] = arr[i];
                 curr++;
             }
-            //=====================
+            
             else
             {
+				//Replace the oldest page in frame
                 pageFrameArr[oldestPageIndex][i] = arr[i];
                 oldestPageIndex = (oldestPageIndex + 1) % pageFrame;
-                // for (int j = curr; j > 0; j--)
-                // {
-                //     if (ref[pageFrameArr[j][i]] > ref[pageFrameArr[minRefIndex][i]])
-                //         minRefIndex = j;
-                // }
-                // pageFrameArr[minRefIndex][i] = arr[i];
+               
             }
 
             pageFaultArr[i] = '*';
         }
-        //======================
+        
         // Update reference
         ref[arr[i]] = i;
     }
