@@ -5,17 +5,14 @@
 
 #define true 1
 #define false 0
-#define MAX_PAGE 100
 
 void FIFO(int n, int *arr, int pageFrame, int **pageFrameArr, char *pageFaultArr)
 {
-    int ref[MAX_PAGE] = {-1};
     int curr = 0;
     int oldestPageIndex = 0;
 
     // The first page
     pageFrameArr[0][0] = arr[0];
-    ref[arr[0]] = 0;
     pageFaultArr[0] = '*';
     curr++;
 
@@ -40,19 +37,13 @@ void FIFO(int n, int *arr, int pageFrame, int **pageFrameArr, char *pageFaultArr
                 pageFrameArr[curr][i] = arr[i];
                 curr++;
             }
-            
             else
             {
-				//Replace the oldest page in frame
                 pageFrameArr[oldestPageIndex][i] = arr[i];
                 oldestPageIndex = (oldestPageIndex + 1) % pageFrame;
-               
             }
 
             pageFaultArr[i] = '*';
         }
-        
-        // Update reference
-        ref[arr[i]] = i;
     }
 }
